@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinda.nbminer.mapper.LteMacRachTriggerId3Mapper">
+  <resultMap id="BaseResultMap" type="com.yinda.nbminer.model.LteMacRachTriggerId3">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="subpacket_subpacket_size" jdbcType="VARCHAR" property="subpacketSubpacketSize" />
+    <result column="subpacket_rach_config_v6_preamble_Init_power" jdbcType="VARCHAR" property="subpacketRachConfigV6PreambleInitPower" />
+    <result column="subpacket_rach_config_v6_power_ramping_step" jdbcType="VARCHAR" property="subpacketRachConfigV6PowerRampingStep" />
+    <result column="subpacket_rach_config_v6_delta_preamble_msg3" jdbcType="VARCHAR" property="subpacketRachConfigV6DeltaPreambleMsg3" />
+    <result column="subpacket_rach_config_v6_rsrp_thresh_prach_list_size" jdbcType="VARCHAR" property="subpacketRachConfigV6RsrpThreshPrachListSize" />
+    <result column="subpacket_rach_config_v6_prach_param_ce_list" jdbcType="VARCHAR" property="subpacketRachConfigV6PrachParamCeList" />
+    <result column="subpacket_rach_config_v6_prach_param_ce_na" jdbcType="VARCHAR" property="subpacketRachConfigV6PrachParamCeNa" />
+    <result column="subpacket_rach_config_v6_preamble_trans_max_ce" jdbcType="VARCHAR" property="subpacketRachConfigV6PreambleTransMaxCe" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, subpacket_subpacket_size, subpacket_rach_config_v6_preamble_Init_power, subpacket_rach_config_v6_power_ramping_step, 
+    subpacket_rach_config_v6_delta_preamble_msg3, subpacket_rach_config_v6_rsrp_thresh_prach_list_size, 
+    subpacket_rach_config_v6_prach_param_ce_list, subpacket_rach_config_v6_prach_param_ce_na, 
+    subpacket_rach_config_v6_preamble_trans_max_ce, type, file_id
+  </sql>
+  <select id="selectByExample" parameterType="com.yinda.nbminer.model.LteMacRachTriggerId3Example" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lte_mac_rach_trigger_id3
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lte_mac_rach_trigger_id3
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lte_mac_rach_trigger_id3
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yinda.nbminer.model.LteMacRachTriggerId3Example">
+    delete from lte_mac_rach_trigger_id3
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yinda.nbminer.model.LteMacRachTriggerId3">
+    insert into lte_mac_rach_trigger_id3 (id, subpacket_subpacket_size, subpacket_rach_config_v6_preamble_Init_power, 
+      subpacket_rach_config_v6_power_ramping_step, subpacket_rach_config_v6_delta_preamble_msg3, 
+      subpacket_rach_config_v6_rsrp_thresh_prach_list_size, subpacket_rach_config_v6_prach_param_ce_list, 
+      subpacket_rach_config_v6_prach_param_ce_na, subpacket_rach_config_v6_preamble_trans_max_ce, 
+      type, file_id)
+    values (#{id,jdbcType=INTEGER}, #{subpacketSubpacketSize,jdbcType=VARCHAR}, #{subpacketRachConfigV6PreambleInitPower,jdbcType=VARCHAR}, 
+      #{subpacketRachConfigV6PowerRampingStep,jdbcType=VARCHAR}, #{subpacketRachConfigV6DeltaPreambleMsg3,jdbcType=VARCHAR}, 
+      #{subpacketRachConfigV6RsrpThreshPrachListSize,jdbcType=VARCHAR}, #{subpacketRachConfigV6PrachParamCeList,jdbcType=VARCHAR}, 
+      #{subpacketRachConfigV6PrachParamCeNa,jdbcType=VARCHAR}, #{subpacketRachConfigV6PreambleTransMaxCe,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{fileId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinda.nbminer.model.LteMacRachTriggerId3">
+    insert into lte_mac_rach_trigger_id3
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="subpacketSubpacketSize != null">
+        subpacket_subpacket_size,
+      </if>
+      <if test="subpacketRachConfigV6PreambleInitPower != null">
+        subpacket_rach_config_v6_preamble_Init_power,
+      </if>
+      <if test="subpacketRachConfigV6PowerRampingStep != null">
+        subpacket_rach_config_v6_power_ramping_step,
+      </if>
+      <if test="subpacketRachConfigV6DeltaPreambleMsg3 != null">
+        subpacket_rach_config_v6_delta_preamble_msg3,
+      </if>
+      <if test="subpacketRachConfigV6RsrpThreshPrachListSize != null">
+        subpacket_rach_config_v6_rsrp_thresh_prach_list_size,
+      </if>
+      <if test="subpacketRachConfigV6PrachParamCeList != null">
+        subpacket_rach_config_v6_prach_param_ce_list,
+      </if>
+      <if test="subpacketRachConfigV6PrachParamCeNa != null">
+        subpacket_rach_config_v6_prach_param_ce_na,
+      </if>
+      <if test="subpacketRachConfigV6PreambleTransMaxCe != null">
+        subpacket_rach_config_v6_preamble_trans_max_ce,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="fileId != null">
+        file_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="subpacketSubpacketSize != null">
+        #{subpacketSubpacketSize,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PreambleInitPower != null">
+        #{subpacketRachConfigV6PreambleInitPower,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PowerRampingStep != null">
+        #{subpacketRachConfigV6PowerRampingStep,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6DeltaPreambleMsg3 != null">
+        #{subpacketRachConfigV6DeltaPreambleMsg3,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6RsrpThreshPrachListSize != null">
+        #{subpacketRachConfigV6RsrpThreshPrachListSize,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PrachParamCeList != null">
+        #{subpacketRachConfigV6PrachParamCeList,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PrachParamCeNa != null">
+        #{subpacketRachConfigV6PrachParamCeNa,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PreambleTransMaxCe != null">
+        #{subpacketRachConfigV6PreambleTransMaxCe,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yinda.nbminer.model.LteMacRachTriggerId3Example" resultType="java.lang.Long">
+    select count(*) from lte_mac_rach_trigger_id3
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lte_mac_rach_trigger_id3
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.subpacketSubpacketSize != null">
+        subpacket_subpacket_size = #{record.subpacketSubpacketSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpacketRachConfigV6PreambleInitPower != null">
+        subpacket_rach_config_v6_preamble_Init_power = #{record.subpacketRachConfigV6PreambleInitPower,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpacketRachConfigV6PowerRampingStep != null">
+        subpacket_rach_config_v6_power_ramping_step = #{record.subpacketRachConfigV6PowerRampingStep,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpacketRachConfigV6DeltaPreambleMsg3 != null">
+        subpacket_rach_config_v6_delta_preamble_msg3 = #{record.subpacketRachConfigV6DeltaPreambleMsg3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpacketRachConfigV6RsrpThreshPrachListSize != null">
+        subpacket_rach_config_v6_rsrp_thresh_prach_list_size = #{record.subpacketRachConfigV6RsrpThreshPrachListSize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpacketRachConfigV6PrachParamCeList != null">
+        subpacket_rach_config_v6_prach_param_ce_list = #{record.subpacketRachConfigV6PrachParamCeList,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpacketRachConfigV6PrachParamCeNa != null">
+        subpacket_rach_config_v6_prach_param_ce_na = #{record.subpacketRachConfigV6PrachParamCeNa,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subpacketRachConfigV6PreambleTransMaxCe != null">
+        subpacket_rach_config_v6_preamble_trans_max_ce = #{record.subpacketRachConfigV6PreambleTransMaxCe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileId != null">
+        file_id = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lte_mac_rach_trigger_id3
+    set id = #{record.id,jdbcType=INTEGER},
+      subpacket_subpacket_size = #{record.subpacketSubpacketSize,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_preamble_Init_power = #{record.subpacketRachConfigV6PreambleInitPower,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_power_ramping_step = #{record.subpacketRachConfigV6PowerRampingStep,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_delta_preamble_msg3 = #{record.subpacketRachConfigV6DeltaPreambleMsg3,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_rsrp_thresh_prach_list_size = #{record.subpacketRachConfigV6RsrpThreshPrachListSize,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_prach_param_ce_list = #{record.subpacketRachConfigV6PrachParamCeList,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_prach_param_ce_na = #{record.subpacketRachConfigV6PrachParamCeNa,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_preamble_trans_max_ce = #{record.subpacketRachConfigV6PreambleTransMaxCe,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      file_id = #{record.fileId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinda.nbminer.model.LteMacRachTriggerId3">
+    update lte_mac_rach_trigger_id3
+    <set>
+      <if test="subpacketSubpacketSize != null">
+        subpacket_subpacket_size = #{subpacketSubpacketSize,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PreambleInitPower != null">
+        subpacket_rach_config_v6_preamble_Init_power = #{subpacketRachConfigV6PreambleInitPower,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PowerRampingStep != null">
+        subpacket_rach_config_v6_power_ramping_step = #{subpacketRachConfigV6PowerRampingStep,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6DeltaPreambleMsg3 != null">
+        subpacket_rach_config_v6_delta_preamble_msg3 = #{subpacketRachConfigV6DeltaPreambleMsg3,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6RsrpThreshPrachListSize != null">
+        subpacket_rach_config_v6_rsrp_thresh_prach_list_size = #{subpacketRachConfigV6RsrpThreshPrachListSize,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PrachParamCeList != null">
+        subpacket_rach_config_v6_prach_param_ce_list = #{subpacketRachConfigV6PrachParamCeList,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PrachParamCeNa != null">
+        subpacket_rach_config_v6_prach_param_ce_na = #{subpacketRachConfigV6PrachParamCeNa,jdbcType=VARCHAR},
+      </if>
+      <if test="subpacketRachConfigV6PreambleTransMaxCe != null">
+        subpacket_rach_config_v6_preamble_trans_max_ce = #{subpacketRachConfigV6PreambleTransMaxCe,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinda.nbminer.model.LteMacRachTriggerId3">
+    update lte_mac_rach_trigger_id3
+    set subpacket_subpacket_size = #{subpacketSubpacketSize,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_preamble_Init_power = #{subpacketRachConfigV6PreambleInitPower,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_power_ramping_step = #{subpacketRachConfigV6PowerRampingStep,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_delta_preamble_msg3 = #{subpacketRachConfigV6DeltaPreambleMsg3,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_rsrp_thresh_prach_list_size = #{subpacketRachConfigV6RsrpThreshPrachListSize,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_prach_param_ce_list = #{subpacketRachConfigV6PrachParamCeList,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_prach_param_ce_na = #{subpacketRachConfigV6PrachParamCeNa,jdbcType=VARCHAR},
+      subpacket_rach_config_v6_preamble_trans_max_ce = #{subpacketRachConfigV6PreambleTransMaxCe,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      file_id = #{fileId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

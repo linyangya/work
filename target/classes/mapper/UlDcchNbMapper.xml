@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinda.nbminer.mapper.UlDcchNbMapper">
+  <resultMap id="BaseResultMap" type="com.yinda.nbminer.model.UlDcchNb">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="pkt_version" jdbcType="VARCHAR" property="pktVersion" />
+    <result column="rrc_release_number-major-minor" jdbcType="VARCHAR" property="rrcReleaseNumberMajorMinor" />
+    <result column="radio_bearer_id" jdbcType="VARCHAR" property="radioBearerId" />
+    <result column="physical_cell_id" jdbcType="VARCHAR" property="physicalCellId" />
+    <result column="freq" jdbcType="VARCHAR" property="freq" />
+    <result column="sysframenum" jdbcType="VARCHAR" property="sysframenum" />
+    <result column="subframenum" jdbcType="VARCHAR" property="subframenum" />
+    <result column="pdu_number" jdbcType="VARCHAR" property="pduNumber" />
+    <result column="msg_length" jdbcType="VARCHAR" property="msgLength" />
+    <result column="sib_mask_in_si" jdbcType="VARCHAR" property="sibMaskInSi" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, time, pkt_version, rrc_release_number-major-minor, radio_bearer_id, physical_cell_id, 
+    freq, sysframenum, subframenum, pdu_number, msg_length, sib_mask_in_si, type, file_id
+  </sql>
+  <select id="selectByExample" parameterType="com.yinda.nbminer.model.UlDcchNbExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ul_dcch_nb
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ul_dcch_nb
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ul_dcch_nb
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yinda.nbminer.model.UlDcchNbExample">
+    delete from ul_dcch_nb
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yinda.nbminer.model.UlDcchNb">
+    insert into ul_dcch_nb (id, time, pkt_version, 
+      rrc_release_number-major-minor, radio_bearer_id, 
+      physical_cell_id, freq, sysframenum, 
+      subframenum, pdu_number, msg_length, 
+      sib_mask_in_si, type, file_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=VARCHAR}, #{pktVersion,jdbcType=VARCHAR}, 
+      #{rrcReleaseNumberMajorMinor,jdbcType=VARCHAR}, #{radioBearerId,jdbcType=VARCHAR}, 
+      #{physicalCellId,jdbcType=VARCHAR}, #{freq,jdbcType=VARCHAR}, #{sysframenum,jdbcType=VARCHAR}, 
+      #{subframenum,jdbcType=VARCHAR}, #{pduNumber,jdbcType=VARCHAR}, #{msgLength,jdbcType=VARCHAR}, 
+      #{sibMaskInSi,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{fileId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yinda.nbminer.model.UlDcchNb">
+    insert into ul_dcch_nb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="pktVersion != null">
+        pkt_version,
+      </if>
+      <if test="rrcReleaseNumberMajorMinor != null">
+        rrc_release_number-major-minor,
+      </if>
+      <if test="radioBearerId != null">
+        radio_bearer_id,
+      </if>
+      <if test="physicalCellId != null">
+        physical_cell_id,
+      </if>
+      <if test="freq != null">
+        freq,
+      </if>
+      <if test="sysframenum != null">
+        sysframenum,
+      </if>
+      <if test="subframenum != null">
+        subframenum,
+      </if>
+      <if test="pduNumber != null">
+        pdu_number,
+      </if>
+      <if test="msgLength != null">
+        msg_length,
+      </if>
+      <if test="sibMaskInSi != null">
+        sib_mask_in_si,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="fileId != null">
+        file_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="pktVersion != null">
+        #{pktVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="rrcReleaseNumberMajorMinor != null">
+        #{rrcReleaseNumberMajorMinor,jdbcType=VARCHAR},
+      </if>
+      <if test="radioBearerId != null">
+        #{radioBearerId,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalCellId != null">
+        #{physicalCellId,jdbcType=VARCHAR},
+      </if>
+      <if test="freq != null">
+        #{freq,jdbcType=VARCHAR},
+      </if>
+      <if test="sysframenum != null">
+        #{sysframenum,jdbcType=VARCHAR},
+      </if>
+      <if test="subframenum != null">
+        #{subframenum,jdbcType=VARCHAR},
+      </if>
+      <if test="pduNumber != null">
+        #{pduNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="msgLength != null">
+        #{msgLength,jdbcType=VARCHAR},
+      </if>
+      <if test="sibMaskInSi != null">
+        #{sibMaskInSi,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yinda.nbminer.model.UlDcchNbExample" resultType="java.lang.Long">
+    select count(*) from ul_dcch_nb
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ul_dcch_nb
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null">
+        time = #{record.time,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pktVersion != null">
+        pkt_version = #{record.pktVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rrcReleaseNumberMajorMinor != null">
+        rrc_release_number-major-minor = #{record.rrcReleaseNumberMajorMinor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.radioBearerId != null">
+        radio_bearer_id = #{record.radioBearerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.physicalCellId != null">
+        physical_cell_id = #{record.physicalCellId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freq != null">
+        freq = #{record.freq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sysframenum != null">
+        sysframenum = #{record.sysframenum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subframenum != null">
+        subframenum = #{record.subframenum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pduNumber != null">
+        pdu_number = #{record.pduNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.msgLength != null">
+        msg_length = #{record.msgLength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sibMaskInSi != null">
+        sib_mask_in_si = #{record.sibMaskInSi,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileId != null">
+        file_id = #{record.fileId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ul_dcch_nb
+    set id = #{record.id,jdbcType=INTEGER},
+      time = #{record.time,jdbcType=VARCHAR},
+      pkt_version = #{record.pktVersion,jdbcType=VARCHAR},
+      rrc_release_number-major-minor = #{record.rrcReleaseNumberMajorMinor,jdbcType=VARCHAR},
+      radio_bearer_id = #{record.radioBearerId,jdbcType=VARCHAR},
+      physical_cell_id = #{record.physicalCellId,jdbcType=VARCHAR},
+      freq = #{record.freq,jdbcType=VARCHAR},
+      sysframenum = #{record.sysframenum,jdbcType=VARCHAR},
+      subframenum = #{record.subframenum,jdbcType=VARCHAR},
+      pdu_number = #{record.pduNumber,jdbcType=VARCHAR},
+      msg_length = #{record.msgLength,jdbcType=VARCHAR},
+      sib_mask_in_si = #{record.sibMaskInSi,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      file_id = #{record.fileId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yinda.nbminer.model.UlDcchNb">
+    update ul_dcch_nb
+    <set>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="pktVersion != null">
+        pkt_version = #{pktVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="rrcReleaseNumberMajorMinor != null">
+        rrc_release_number-major-minor = #{rrcReleaseNumberMajorMinor,jdbcType=VARCHAR},
+      </if>
+      <if test="radioBearerId != null">
+        radio_bearer_id = #{radioBearerId,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalCellId != null">
+        physical_cell_id = #{physicalCellId,jdbcType=VARCHAR},
+      </if>
+      <if test="freq != null">
+        freq = #{freq,jdbcType=VARCHAR},
+      </if>
+      <if test="sysframenum != null">
+        sysframenum = #{sysframenum,jdbcType=VARCHAR},
+      </if>
+      <if test="subframenum != null">
+        subframenum = #{subframenum,jdbcType=VARCHAR},
+      </if>
+      <if test="pduNumber != null">
+        pdu_number = #{pduNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="msgLength != null">
+        msg_length = #{msgLength,jdbcType=VARCHAR},
+      </if>
+      <if test="sibMaskInSi != null">
+        sib_mask_in_si = #{sibMaskInSi,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yinda.nbminer.model.UlDcchNb">
+    update ul_dcch_nb
+    set time = #{time,jdbcType=VARCHAR},
+      pkt_version = #{pktVersion,jdbcType=VARCHAR},
+      rrc_release_number-major-minor = #{rrcReleaseNumberMajorMinor,jdbcType=VARCHAR},
+      radio_bearer_id = #{radioBearerId,jdbcType=VARCHAR},
+      physical_cell_id = #{physicalCellId,jdbcType=VARCHAR},
+      freq = #{freq,jdbcType=VARCHAR},
+      sysframenum = #{sysframenum,jdbcType=VARCHAR},
+      subframenum = #{subframenum,jdbcType=VARCHAR},
+      pdu_number = #{pduNumber,jdbcType=VARCHAR},
+      msg_length = #{msgLength,jdbcType=VARCHAR},
+      sib_mask_in_si = #{sibMaskInSi,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      file_id = #{fileId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
