@@ -56,7 +56,6 @@
 		<table tableName="lte_mac_rach_trigger_id3"/>
 		<table tableName="lte_mac_rach_trigger_id5"/>
 		<table tableName="lte_mac_ul_tx_stat"/>
-		<table tableName="lte_mac_ul_tx_stat"/>
 		<table tableName="lte_nas_esm_bearer_context_state"/>
 		<table tableName="lte_nsa_emm_security_protected_outgoing_msg"/>
 		<table tableName="ul_dcch_nb"/>

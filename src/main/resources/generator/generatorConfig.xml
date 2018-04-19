@@ -3,36 +3,61 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <properties resource="generator/mybatis_generator_config.properties"/>
-	
-    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
-    	
-		<property name="javaFileEncoding" value="UTF-8"/>
-		
-        <property name="beginningDelimiter" value="`"/>
-        <property name="endingDelimiter" value="`"/>
+	<properties resource="generator/mybatis_generator_config.properties" />
 
-        <plugin type="${mapper.plugin}">
-            <property name="mappers" value="${mapper.Mapper}"/>
-        </plugin>
+	<context id="Mysql" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
 
-        <jdbcConnection driverClass="${jdbc.driverClass}"
-                        connectionURL="${jdbc.url}"
-                        userId="${jdbc.user}"
-                        password="${jdbc.password}">
-        </jdbcConnection>
+		<property name="javaFileEncoding" value="UTF-8" />
 
-        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
 
-        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+		<plugin type="${mapper.plugin}">
+			<property name="mappers" value="${mapper.Mapper}" />
+		</plugin>
 
-        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
-                             type="XMLMAPPER"/>
+		<jdbcConnection driverClass="${jdbc.driverClass}"
+			connectionURL="${jdbc.url}" userId="${jdbc.user}" password="${jdbc.password}">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="${targetModelPackage}"
+			targetProject="${targetJavaProject}" />
+
+		<sqlMapGenerator targetPackage="${targetXMLPackage}"
+			targetProject="${targetResourcesProject}" />
+
+		<javaClientGenerator targetPackage="${targetMapperPackage}"
+			targetProject="${targetJavaProject}" type="XMLMAPPER" />
 
 
-        <table tableName="sys_user">
-            <generatedKey column="user_id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        
-    </context>
+		<table tableName="sys_user">
+			<generatedKey column="user_id" sqlStatement="Mysql"
+				identity="true" />
+		</table>
+		<table tableName="lte_mac_rach_trigger">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+
+
+		<table tableName="lte_mac_rach_trigger_id3">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="lte_mac_rach_trigger_id5">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="lte_mac_ul_tx_stat">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="lte_nas_esm_bearer_context_state">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="lte_nsa_emm_security_protected_outgoing_msg">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="ul_dcch_nb">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+
+	</context>
 </generatorConfiguration>
